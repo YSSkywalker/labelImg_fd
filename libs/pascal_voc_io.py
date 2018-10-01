@@ -74,8 +74,8 @@ class PascalVocWriter:
         segmented.text = '0'
         return top
 
-    def addBndBox(self, xmin, ymin, xmax, ymax, name, difficult):
-        bndbox = {'xmin': xmin, 'ymin': ymin, 'xmax': xmax, 'ymax': ymax}
+    def addBndBox(self, xmin, ymin, xmax, ymax, width, height, name, difficult):
+        bndbox = {'xmin': xmin, 'ymin': ymin, 'xmax': xmax, 'ymax': ymax, 'width': width, 'height': height}
         bndbox['name'] = name
         bndbox['difficult'] = difficult
         self.boxlist.append(bndbox)
@@ -109,6 +109,10 @@ class PascalVocWriter:
             xmax.text = str(each_object['xmax'])
             ymax = SubElement(bndbox, 'ymax')
             ymax.text = str(each_object['ymax'])
+            width = SubElement(bndbox, 'width')
+            width.text = str(each_object['width'])
+            height = SubElement(bndbox, 'height')
+            height.text = str(each_object['height'])
 
     def save(self, targetFile=None):
         root = self.genXML()
