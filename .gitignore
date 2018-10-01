@@ -21,3 +21,5 @@ cscope*
 images/
 
 .DS_Store
+
+README.rst
